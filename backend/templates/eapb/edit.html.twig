@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Eapb{% endblock %}
+
+{% block body %}
+    <h1>Edit Eapb</h1>
+
+    {{ include('eapb/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('eapb_index') }}">back to list</a>
+
+    {{ include('eapb/_delete_form.html.twig') }}
+{% endblock %}

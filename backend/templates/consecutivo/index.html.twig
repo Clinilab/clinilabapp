@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consecutivo index{% endblock %}
+
+{% block body %}
+    <h1>Consecutivo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prefijo</th>
+                <th>Consecutivo</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for consecutivo in consecutivos %}
+            <tr>
+                <td>{{ consecutivo.id }}</td>
+                <td>{{ consecutivo.prefijo }}</td>
+                <td>{{ consecutivo.consecutivo }}</td>
+                <td>{{ consecutivo.Activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('consecutivo_show', {'id': consecutivo.id}) }}">show</a>
+                    <a href="{{ path('consecutivo_edit', {'id': consecutivo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('consecutivo_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PresupuestoActividad{% endblock %}
+
+{% block body %}
+    <h1>PresupuestoActividad</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ presupuesto_actividad.id }}</td>
+            </tr>
+            <tr>
+                <th>FechaProgramacion</th>
+                <td>{{ presupuesto_actividad.fechaProgramacion ? presupuesto_actividad.fechaProgramacion|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FechaEjecucion</th>
+                <td>{{ presupuesto_actividad.fechaEjecucion ? presupuesto_actividad.fechaEjecucion|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ValorRecolectado</th>
+                <td>{{ presupuesto_actividad.valorRecolectado }}</td>
+            </tr>
+            <tr>
+                <th>PorcentajeEjecucion</th>
+                <td>{{ presupuesto_actividad.porcentajeEjecucion }}</td>
+            </tr>
+            <tr>
+                <th>ValorInvertido</th>
+                <td>{{ presupuesto_actividad.valorInvertido }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ presupuesto_actividad.activo ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('presupuesto_actividad_index') }}">back to list</a>
+
+    <a href="{{ path('presupuesto_actividad_edit', {'id': presupuesto_actividad.id}) }}">edit</a>
+
+    {{ include('presupuesto_actividad/_delete_form.html.twig') }}
+{% endblock %}

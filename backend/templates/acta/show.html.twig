@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acta{% endblock %}
+
+{% block body %}
+    <h1>Acta</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ actum.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ actum.fecha ? actum.fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tema</th>
+                <td>{{ actum.tema }}</td>
+            </tr>
+            <tr>
+                <th>Conclusiones</th>
+                <td>{{ actum.conclusiones }}</td>
+            </tr>
+            <tr>
+                <th>Compromisos</th>
+                <td>{{ actum.compromisos }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ actum.activo ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('acta_index') }}">back to list</a>
+
+    <a href="{{ path('acta_edit', {'id': actum.id}) }}">edit</a>
+
+    {{ include('acta/_delete_form.html.twig') }}
+{% endblock %}

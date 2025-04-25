@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit RelacionLaboral{% endblock %}
+
+{% block body %}
+    <h1>Edit RelacionLaboral</h1>
+
+    {{ include('relacion_laboral/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('relacion_laboral_index') }}">back to list</a>
+
+    {{ include('relacion_laboral/_delete_form.html.twig') }}
+{% endblock %}

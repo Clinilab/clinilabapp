@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Estudio index{% endblock %}
+
+{% block body %}
+    <h1>Estudio index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Codigo</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for estudio in estudios %}
+            <tr>
+                <td>{{ estudio.id }}</td>
+                <td>{{ estudio.nombre }}</td>
+                <td>{{ estudio.codigo }}</td>
+                <td>{{ estudio.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('estudio_show', {'id': estudio.id}) }}">show</a>
+                    <a href="{{ path('estudio_edit', {'id': estudio.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('estudio_new') }}">Create new</a>
+{% endblock %}

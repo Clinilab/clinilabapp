@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acta index{% endblock %}
+
+{% block body %}
+    <h1>Acta index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Tema</th>
+                <th>Conclusiones</th>
+                <th>Compromisos</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for actum in actas %}
+            <tr>
+                <td>{{ actum.id }}</td>
+                <td>{{ actum.fecha ? actum.fecha|date('Y-m-d') : '' }}</td>
+                <td>{{ actum.tema }}</td>
+                <td>{{ actum.conclusiones }}</td>
+                <td>{{ actum.compromisos }}</td>
+                <td>{{ actum.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('acta_show', {'id': actum.id}) }}">show</a>
+                    <a href="{{ path('acta_edit', {'id': actum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('acta_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RelacionLaboral index{% endblock %}
+
+{% block body %}
+    <h1>RelacionLaboral index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cargo</th>
+                <th>FechaInicio</th>
+                <th>FechaFin</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for relacion_laboral in relacion_laborals %}
+            <tr>
+                <td>{{ relacion_laboral.id }}</td>
+                <td>{{ relacion_laboral.cargo }}</td>
+                <td>{{ relacion_laboral.fechaInicio ? relacion_laboral.fechaInicio|date('Y-m-d') : '' }}</td>
+                <td>{{ relacion_laboral.fechaFin ? relacion_laboral.fechaFin|date('Y-m-d') : '' }}</td>
+                <td>{{ relacion_laboral.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('relacion_laboral_show', {'id': relacion_laboral.id}) }}">show</a>
+                    <a href="{{ path('relacion_laboral_edit', {'id': relacion_laboral.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('relacion_laboral_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Consecutivo{% endblock %}
+
+{% block body %}
+    <h1>Edit Consecutivo</h1>
+
+    {{ include('consecutivo/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('consecutivo_index') }}">back to list</a>
+
+    {{ include('consecutivo/_delete_form.html.twig') }}
+{% endblock %}

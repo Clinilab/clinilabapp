@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Institucion index{% endblock %}
+
+{% block body %}
+    <h1>Institucion index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Identificacion</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Logo</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for institucion in institucions %}
+            <tr>
+                <td>{{ institucion.id }}</td>
+                <td>{{ institucion.nombre }}</td>
+                <td>{{ institucion.identificacion }}</td>
+                <td>{{ institucion.direccion }}</td>
+                <td>{{ institucion.telefono }}</td>
+                <td>{{ institucion.logo }}</td>
+                <td>{{ institucion.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('institucion_show', {'id': institucion.id}) }}">show</a>
+                    <a href="{{ path('institucion_edit', {'id': institucion.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('institucion_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PagoAdministracion{% endblock %}
+
+{% block body %}
+    <h1>Create new PagoAdministracion</h1>
+
+    {{ include('pago_administracion/_form.html.twig') }}
+
+    <a href="{{ path('pago_administracion_index') }}">back to list</a>
+{% endblock %}

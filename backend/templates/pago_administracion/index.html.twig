@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PagoAdministracion index{% endblock %}
+
+{% block body %}
+    <h1>PagoAdministracion index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ValorFacturado</th>
+                <th>InteresMora</th>
+                <th>ValorRecibido</th>
+                <th>FechaPago</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pago_administracion in pago_administracions %}
+            <tr>
+                <td>{{ pago_administracion.id }}</td>
+                <td>{{ pago_administracion.valorFacturado }}</td>
+                <td>{{ pago_administracion.interesMora }}</td>
+                <td>{{ pago_administracion.valorRecibido }}</td>
+                <td>{{ pago_administracion.fechaPago ? pago_administracion.fechaPago|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('pago_administracion_show', {'id': pago_administracion.id}) }}">show</a>
+                    <a href="{{ path('pago_administracion_edit', {'id': pago_administracion.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('pago_administracion_new') }}">Create new</a>
+{% endblock %}

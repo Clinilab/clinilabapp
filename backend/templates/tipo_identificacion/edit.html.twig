@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit TipoIdentificacion{% endblock %}
+
+{% block body %}
+    <h1>Edit TipoIdentificacion</h1>
+
+    {{ include('tipo_identificacion/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('tipo_identificacion_index') }}">back to list</a>
+
+    {{ include('tipo_identificacion/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PresupuestoActividad{% endblock %}
+
+{% block body %}
+    <h1>Edit PresupuestoActividad</h1>
+
+    {{ include('presupuesto_actividad/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('presupuesto_actividad_index') }}">back to list</a>
+
+    {{ include('presupuesto_actividad/_delete_form.html.twig') }}
+{% endblock %}

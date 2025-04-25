@@ -1,0 +1,15 @@
+# Swiftmailer Configuration port 587
+swiftmailer:
+    transport:              smtp
+    encryption:             ssl
+    auth_mode:              null
+    #host:                   reuniones.hospitalsanpedro.org
+    host:                   mail.astarnova.com
+    username:               no-reply@astarnova.com
+    #username:               no-responder@apps.hospitalsanpedro.org
+    password:               $Admin123.$
+    port:                   465
+    delivery_address:       edgargn87@gmail.com
+#swiftmailer:
+    #url: '%env(MAILER_URL)%'
+    #spool: { type: 'memory' }

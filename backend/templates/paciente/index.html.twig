@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paciente index{% endblock %}
+
+{% block body %}
+    <h1>Paciente index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FechaNacimiento</th>
+                <th>Direccion</th>
+                <th>Notas</th>
+                <th>Foto</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paciente in pacientes %}
+            <tr>
+                <td>{{ paciente.id }}</td>
+                <td>{{ paciente.fechaNacimiento }}</td>
+                <td>{{ paciente.direccion }}</td>
+                <td>{{ paciente.notas }}</td>
+                <td>{{ paciente.foto }}</td>
+                <td>
+                    <a href="{{ path('paciente_show', {'id': paciente.id}) }}">show</a>
+                    <a href="{{ path('paciente_edit', {'id': paciente.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('paciente_new') }}">Create new</a>
+{% endblock %}

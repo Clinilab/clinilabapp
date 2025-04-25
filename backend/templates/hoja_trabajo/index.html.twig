@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HojaTrabajo index{% endblock %}
+
+{% block body %}
+    <h1>HojaTrabajo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Archivo</th>
+                <th>Fecha</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hoja_trabajo in hoja_trabajos %}
+            <tr>
+                <td>{{ hoja_trabajo.id }}</td>
+                <td>{{ hoja_trabajo.nombre }}</td>
+                <td>{{ hoja_trabajo.archivo }}</td>
+                <td>{{ hoja_trabajo.fecha }}</td>
+                <td>{{ hoja_trabajo.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('hoja_trabajo_show', {'id': hoja_trabajo.id}) }}">show</a>
+                    <a href="{{ path('hoja_trabajo_edit', {'id': hoja_trabajo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hoja_trabajo_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Consecutivo{% endblock %}
+
+{% block body %}
+    <h1>Create new Consecutivo</h1>
+
+    {{ include('consecutivo/_form.html.twig') }}
+
+    <a href="{{ path('consecutivo_index') }}">back to list</a>
+{% endblock %}

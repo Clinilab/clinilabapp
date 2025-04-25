@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Asamblea index{% endblock %}
+
+{% block body %}
+    <h1>Asamblea index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FechaProgramada</th>
+                <th>Asunto</th>
+                <th>FechaEjecucion</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for asamblea in asambleas %}
+            <tr>
+                <td>{{ asamblea.id }}</td>
+                <td>{{ asamblea.fechaProgramada ? asamblea.fechaProgramada|date('Y-m-d') : '' }}</td>
+                <td>{{ asamblea.asunto }}</td>
+                <td>{{ asamblea.fechaEjecucion ? asamblea.fechaEjecucion|date('Y-m-d') : '' }}</td>
+                <td>{{ asamblea.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('asamblea_show', {'id': asamblea.id}) }}">show</a>
+                    <a href="{{ path('asamblea_edit', {'id': asamblea.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('asamblea_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New HojaTrabajo{% endblock %}
+
+{% block body %}
+    <h1>Create new HojaTrabajo</h1>
+
+    {{ include('hoja_trabajo/_form.html.twig') }}
+
+    <a href="{{ path('hoja_trabajo_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Asamblea{% endblock %}
+
+{% block body %}
+    <h1>Edit Asamblea</h1>
+
+    {{ include('asamblea/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('asamblea_index') }}">back to list</a>
+
+    {{ include('asamblea/_delete_form.html.twig') }}
+{% endblock %}

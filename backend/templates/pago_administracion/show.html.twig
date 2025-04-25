@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PagoAdministracion{% endblock %}
+
+{% block body %}
+    <h1>PagoAdministracion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pago_administracion.id }}</td>
+            </tr>
+            <tr>
+                <th>ValorFacturado</th>
+                <td>{{ pago_administracion.valorFacturado }}</td>
+            </tr>
+            <tr>
+                <th>InteresMora</th>
+                <td>{{ pago_administracion.interesMora }}</td>
+            </tr>
+            <tr>
+                <th>ValorRecibido</th>
+                <td>{{ pago_administracion.valorRecibido }}</td>
+            </tr>
+            <tr>
+                <th>FechaPago</th>
+                <td>{{ pago_administracion.fechaPago ? pago_administracion.fechaPago|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('pago_administracion_index') }}">back to list</a>
+
+    <a href="{{ path('pago_administracion_edit', {'id': pago_administracion.id}) }}">edit</a>
+
+    {{ include('pago_administracion/_delete_form.html.twig') }}
+{% endblock %}

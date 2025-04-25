@@ -1,0 +1,66 @@
+{% if arrayFinal.valoresEstudio %}
+	<table border="0" cellpadding="3" style="font-size:11px">
+		<tr style="background-color: #cccccc;">
+			<td colspan="3">
+				<h5 style="font-size: 7px">{{ arrayFinal.ordenEstudio.estudio.nombre }}</h5>
+			</td>
+			<td colspan="1" style="font-size: 7px; text-align:right;">
+				<b>Fecha validación de resultado:</b>
+				{{ arrayFinal.ordenEstudio.fechaValidacion | date('Y-m-d h:i:s')}}</td>
+		</tr>
+		<tr style="font-size: 7px; background-color: #cccccc; font-weight: bold; text-align: center;">
+			<th width="30%">ESTUDIO</th>
+			<th width="20%">RESULTADO</th>
+			<th width="25%">UNIDADES</th>
+			<th width="25%">VALORES DE REFERENCIA</th>
+		</tr>
+		{% for item in arrayFinal.valoresEstudio %}
+			{% if arrayFinal.ordenEstudio.estudio.id ==  item.ordenEstudio %}
+				{% if item.resultado_estudio.tipo != 'title' %}
+				<tr style="font-size: 7px">
+					<td>{{ item.resultado_estudio.nombre }}</td>
+					<td width="20%">{{ item.valor }}
+					</td>
+					<td>{{ item.resultado_estudio.unidadMedida.nombre }}
+					</td>
+					<td>
+						{% for rango in item.resultado_estudio.rangos  %}
+							{{ rango.nombre }}:
+							{{ rango.inicio }}
+							-
+							{{ rango.fin }}
+							{{ item.resultado_estudio.unidadMedida.nombre }}
+							<br>
+						{% endfor %}
+					</td>
+				</tr>
+				{% else %}
+				<tr style="background-color: #cccccc;"> 
+					<td colspan="4" style="font-size: 7px; text-align: center;">
+						{{ item.resultado_estudio.nombre }}
+					</td>
+				</tr>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	</table>
+
+	{% if arrayFinal.ordenEstudio.user %}
+		<table border="0" cellpadding="3" style="font-size:11px">
+			<tr style="font-size: 7px;">
+				<td width="30%">
+					{% if arrayFinal.ordenEstudio.user.firma %}
+						<img src="/backend/public/img/firmas/{{ arrayFinal.ordenEstudio.user.firma }}" width="100px" height= "100px">
+					{% endif %}
+					<h5 style="font-size: 7px; border-top: 1px solid #000000;">
+						{{ arrayFinal.ordenEstudio.user.nombres }}
+						{{ arrayFinal.ordenEstudio.user.apellidos }}
+					</h5>
+				</td>
+				<td width="70%"></td>
+			</tr>
+		</table>
+	{% endif %}
+
+
+{% endif %}

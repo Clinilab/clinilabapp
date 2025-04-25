@@ -1,0 +1,72 @@
+<h3 style="text-align: center;">
+Hoja de trabajo
+<br>
+<small>{{ estudio.nombre }}</small>
+<br>
+<small>Desde: {{ desde }} Hasta:{{ hasta }}</small>
+</h3>
+<table border="1" cellpadding="0" style="font-size: 6px;">
+    <tr>
+        <td width="20%"></td>
+        {% set width = 80 / (data[0].resultados|length) %}
+        {% for resultado in data[0].resultados %}
+
+            <td style="text-align: center;" width="{{ width }}%">{{ resultado.nombre }}</td>
+            
+        {% endfor %}
+    </tr>
+{% for key, row in data %}
+    <tr>
+        <td width="20%">
+            <b>{{ row.ordenEstudio.orden.numero }}</b>  
+            CC {{ row.ordenEstudio.orden.paciente.user.identificacion }}
+            {{ row.ordenEstudio.orden.paciente.user.genero }}
+            <br>
+            <b>{{ row.ordenEstudio.orden.paciente.user.nombres }} {{ row.ordenEstudio.orden.paciente.user.apellidos }}</b>
+            <br>
+            {{ row.ordenEstudio.orden.servicio.nombre }}
+            <br>
+            {{ row.ordenEstudio.orden.eapb.nombre }}
+        </td>
+        {% for resultado in row.resultados %}
+            {% if resultado.tipo != 'title' %} 
+            <td></td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+
+
+<!-- 
+<table>
+    {% for key, resultadoEstudio in row.resultados %}
+        {% if resultadoEstudio.type is defined and resultadoEstudio.type != 'title' %}
+            {% if (((key + 1) % 4) == 0) or key == 0 %}
+            <tr>                    
+            {% endif %}
+                <td style="background: #cccccc;">
+                    <p style="border-bottom: solid 1px #666666;">
+                        <b>{{ resultadoEstudio.nombre }}</b>
+                        <br>
+                    </p>
+                </td>
+            {% if (((key + 1) % 4) == 0)%}
+            </tr>                    
+            {% endif %}
+            {% if (key + 1) == row.resultados|length %}
+            </tr>                    
+            {% endif %}
+
+        <h5 style="width:80px; padding-right: 3px; background: #cccccc; border: solid 1px #666666;">
+            <b>{{ resultadoEstudio.nombre }}</b>
+            <br>
+        </h5>
+        {% endif %}
+        
+    {% endfor %}
+</table> 
+-->
+{% endfor %}
+</table>
+
+    
+

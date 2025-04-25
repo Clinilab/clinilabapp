@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UnidadMedida index{% endblock %}
+
+{% block body %}
+    <h1>UnidadMedida index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Simbolo</th>
+                <th>Nombre</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for unidad_medida in unidad_medidas %}
+            <tr>
+                <td>{{ unidad_medida.id }}</td>
+                <td>{{ unidad_medida.simbolo }}</td>
+                <td>{{ unidad_medida.nombre }}</td>
+                <td>{{ unidad_medida.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('unidad_medida_show', {'id': unidad_medida.id}) }}">show</a>
+                    <a href="{{ path('unidad_medida_edit', {'id': unidad_medida.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('unidad_medida_new') }}">Create new</a>
+{% endblock %}

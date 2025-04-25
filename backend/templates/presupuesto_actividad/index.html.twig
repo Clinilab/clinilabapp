@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PresupuestoActividad index{% endblock %}
+
+{% block body %}
+    <h1>PresupuestoActividad index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FechaProgramacion</th>
+                <th>FechaEjecucion</th>
+                <th>ValorRecolectado</th>
+                <th>PorcentajeEjecucion</th>
+                <th>ValorInvertido</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for presupuesto_actividad in presupuesto_actividads %}
+            <tr>
+                <td>{{ presupuesto_actividad.id }}</td>
+                <td>{{ presupuesto_actividad.fechaProgramacion ? presupuesto_actividad.fechaProgramacion|date('Y-m-d') : '' }}</td>
+                <td>{{ presupuesto_actividad.fechaEjecucion ? presupuesto_actividad.fechaEjecucion|date('Y-m-d') : '' }}</td>
+                <td>{{ presupuesto_actividad.valorRecolectado }}</td>
+                <td>{{ presupuesto_actividad.porcentajeEjecucion }}</td>
+                <td>{{ presupuesto_actividad.valorInvertido }}</td>
+                <td>{{ presupuesto_actividad.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('presupuesto_actividad_show', {'id': presupuesto_actividad.id}) }}">show</a>
+                    <a href="{{ path('presupuesto_actividad_edit', {'id': presupuesto_actividad.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('presupuesto_actividad_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TipoIdentificacion{% endblock %}
+
+{% block body %}
+    <h1>TipoIdentificacion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tipo_identificacion.id }}</td>
+            </tr>
+            <tr>
+                <th>Codigo</th>
+                <td>{{ tipo_identificacion.codigo }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ tipo_identificacion.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('tipo_identificacion_index') }}">back to list</a>
+
+    <a href="{{ path('tipo_identificacion_edit', {'id': tipo_identificacion.id}) }}">edit</a>
+
+    {{ include('tipo_identificacion/_delete_form.html.twig') }}
+{% endblock %}

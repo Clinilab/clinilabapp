@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Estudio{% endblock %}
+
+{% block body %}
+    <h1>Edit Estudio</h1>
+
+    {{ include('estudio/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('estudio_index') }}">back to list</a>
+
+    {{ include('estudio/_delete_form.html.twig') }}
+{% endblock %}

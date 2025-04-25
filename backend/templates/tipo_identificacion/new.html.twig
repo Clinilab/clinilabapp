@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TipoIdentificacion{% endblock %}
+
+{% block body %}
+    <h1>Create new TipoIdentificacion</h1>
+
+    {{ include('tipo_identificacion/_form.html.twig') }}
+
+    <a href="{{ path('tipo_identificacion_index') }}">back to list</a>
+{% endblock %}

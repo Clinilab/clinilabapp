@@ -1,0 +1,74 @@
+<style>
+    th {
+        font-weight: bold;
+        height: 30px;        
+        text-align: center;        
+      }
+
+    .di { 
+        display: flex;
+        justify-content: center; /* Centrar horizontalmente */
+        align-items: center; /* Centrar verticalmente */
+        font-size:6px;
+      
+    }
+     .top-left {
+        vertical-align: top;
+        text-align: left;
+        padding: 10px;
+    }
+    .font-nombre{
+        font-size:6px;
+    }
+    .tamano-numero{      
+      min-width: 600px;
+    }
+    .tamano-asterisco{      
+       font-size:10px;
+      font-weight: bold;       
+    }
+</style>
+<h2 style="text-align: center;">Hoja de trabajo por área</h2>
+<h4>Area: {{ encabezado.area}}</h4>
+<h4>Desde: {{ encabezado.desde}}  Hasta: {{ encabezado.hasta}}</h4><br>
+<h4>Tipo: {{ encabezado.tipo}} </h4><br>
+<table border="1" cellpadding="0" style="font-size: 7px;">    
+  <thead>       
+        <tr>
+            <th style="width: 50px;"> <div class="di "> <label> Orden </label> </div></th>
+            <th> <div class="di"> <label> Paciente </label> </div></th>            
+            {% for estudio in listaEstudios %}      
+              <th> <div class="di"> {{ estudio.abrev }}</div> </th>               
+            {% endfor %}                              
+        </tr>
+    </thead>
+    <tbody> 
+    
+     {% for orden in ordenes %}            
+        <tr >
+            <td style="height: 30px;width: 50px"> <div class="di"> {{ orden.numero }} </div></td> 
+            <td class="font-nombre">{{ orden.nombre }}<br>
+                Sexo:{{ orden.genero }}<br>
+                Edad:{{ orden.edad }}<br>
+                Ide:{{ orden.identificacion }} 
+            </td> 
+          {% for estudio in listaEstudios %}
+                    <td class="top-left">  
+                    {% for estudioOrdem in orden.estudios %}         
+                          {% if ( estudio.id == estudioOrdem ) %}         
+                             <div  class="tamano-asterisco"> *</div>
+                          {% endif %}                          
+                    {% endfor %}                        
+                    </td> 
+          {% endfor %}                        
+        </tr> 
+      {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+

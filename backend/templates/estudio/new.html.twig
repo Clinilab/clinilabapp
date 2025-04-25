@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Estudio{% endblock %}
+
+{% block body %}
+    <h1>Create new Estudio</h1>
+
+    {{ include('estudio/_form.html.twig') }}
+
+    <a href="{{ path('estudio_index') }}">back to list</a>
+{% endblock %}

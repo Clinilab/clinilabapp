@@ -1,0 +1,26 @@
+{% if data %}
+	<table border="0" cellpadding="3">
+		<tr>
+			<td style="font-size: 4px; text-align:left;">
+				{{ data.ordenEstudio.orden.fecha | date('Y-m-d h:i:s') }}
+				<br>
+				{{ data.ordenEstudio.orden.paciente.user.tipoIdentificacion.nombre }}: 
+				{{ data.ordenEstudio.orden.paciente.user.identificacion }}
+
+				Sexo: 
+				{{ data.ordenEstudio.orden.paciente.user.genero }}
+
+				FN: 
+				{{ data.ordenEstudio.orden.paciente.fechaNacimiento | date('d/m/Y') }}
+				<br>
+				{{ data.ordenEstudio.orden.paciente.user.nombres }}, {{ data.ordenEstudio.orden.paciente.user.apellidos }}
+				<br>
+				{{ data.ordenEstudio.estudio.nombre }}
+				<br>
+				{{ data.ordenEstudio.orden.servicio.nombre }}
+				<br>
+				{{ data.institucion.nombre }}
+			</td>
+		</tr>
+	</table>
+{% endif %}

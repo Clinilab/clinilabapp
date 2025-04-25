@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RelacionLaboral{% endblock %}
+
+{% block body %}
+    <h1>RelacionLaboral</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ relacion_laboral.id }}</td>
+            </tr>
+            <tr>
+                <th>Cargo</th>
+                <td>{{ relacion_laboral.cargo }}</td>
+            </tr>
+            <tr>
+                <th>FechaInicio</th>
+                <td>{{ relacion_laboral.fechaInicio ? relacion_laboral.fechaInicio|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FechaFin</th>
+                <td>{{ relacion_laboral.fechaFin ? relacion_laboral.fechaFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ relacion_laboral.activo ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('relacion_laboral_index') }}">back to list</a>
+
+    <a href="{{ path('relacion_laboral_edit', {'id': relacion_laboral.id}) }}">edit</a>
+
+    {{ include('relacion_laboral/_delete_form.html.twig') }}
+{% endblock %}

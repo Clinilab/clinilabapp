@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Eapb{% endblock %}
+
+{% block body %}
+    <h1>Create new Eapb</h1>
+
+    {{ include('eapb/_form.html.twig') }}
+
+    <a href="{{ path('eapb_index') }}">back to list</a>
+{% endblock %}

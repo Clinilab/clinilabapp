@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RelacionLaboral{% endblock %}
+
+{% block body %}
+    <h1>Create new RelacionLaboral</h1>
+
+    {{ include('relacion_laboral/_form.html.twig') }}
+
+    <a href="{{ path('relacion_laboral_index') }}">back to list</a>
+{% endblock %}

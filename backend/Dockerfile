@@ -19,8 +19,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Establecer directorio de trabajo
 WORKDIR /var/www/html
 
-# Copiar archivos del backend (con frontend dentro de public/frontend)
-COPY . .
+# Copiar archivos del backend (Symfony)
+COPY backend/ /var/www/html/
+
+# Copiar frontend compilado a la carpeta correcta (dentro de public/frontend/)
+COPY frontend/ /var/www/html/public/frontend/
 
 # Instalar dependencias de Symfony
 RUN composer install --no-interaction --no-scripts || true

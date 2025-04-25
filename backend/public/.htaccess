@@ -1,6 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Redirigir la raíz al frontend (index.html)
+    RewriteRule ^$ /frontend/index.html [L]
+
     # Redirigir todo lo que no sea un archivo o directorio a index.php (Symfony)
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
